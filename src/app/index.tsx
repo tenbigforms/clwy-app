@@ -5,7 +5,7 @@ import { Course } from "@/types/course";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-interface ApiResponse{
+interface ApiResponse {
   courses: Course[]
 }
 
