@@ -1,3 +1,4 @@
+import Loading from "@/components/shared/loading/loading";
 import type { Course } from "@/types/course";
 import { useEffect, useState } from "react";
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
@@ -8,8 +9,8 @@ export default function Index() {
   const [count, setCount] = useState(0)
   const [courses, setCourses] = useState<Course[]>([])
   const [keyword, setKeyword] = useState('')
-  const [loading, setLaoding] = useState(true)
-
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   const fetchData = async () => {
     if (courses.length > 0) {
@@ -17,17 +18,32 @@ export default function Index() {
       return
     } else {
       try {
+
         const res = await fetch(`http://v1.kisbook.com:3000/search?q=${keyword}`)
         const { data } = await res.json()
         setCourses(data.courses)
-      } catch (error) {
-        console.error("Error fetching courses:", error)
+      } catch (err) {
+        setError(true)
+      }
+      finally {
+        setLoading(false)
       }
     }
   };
   useEffect(() => {
     fetchData();
   }, [keyword]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>Ooops, network error!</Text>
+      </View>
+    )
+  }
   return (
     <View style={styles.container}>
       <Text>{count}times</Text>
