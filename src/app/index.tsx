@@ -1,27 +1,21 @@
 import Loading from "@/components/shared/loading/loading";
 import NetworkError from "@/components/shared/networkerror/networkerror";
 import type { Course } from "@/types/course";
+import { get } from "@/utils/request";
 import { useEffect, useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Index() {
 
-
-  const [count, setCount] = useState(0)
-  const [courses, setCourses] = useState<Course[]>([])
   const [keyword, setKeyword] = useState('')
+  const [courses, setCourses] = useState<Course[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   const fetchData = async () => {
-    if (courses.length > 0) {
-      setCourses([]);
-      return
-    } else {
-      try {
 
-        const res = await fetch(`http://v1.kisbook.com:3000/search?q=${keyword}`)
-        const { data } = await res.json()
+      try {
+        const { data } = await get('/search', { q: keyword });
         setCourses(data.courses)
       } catch (err) {
         setError(true)
@@ -29,7 +23,6 @@ export default function Index() {
       finally {
         setLoading(false)
       }
-    }
   };
 
   const onReload = async () => {
@@ -50,11 +43,6 @@ export default function Index() {
   }
   return (
     <View style={styles.container}>
-      <Text>{count}times</Text>
-      <Button
-        title="Click me"
-        onPress={() => setCount(count + 1)}
-      />
       <Text>U R SEARHING FOR:{keyword}</Text>
       <TextInput
         style={styles.input}
