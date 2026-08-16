@@ -1,7 +1,8 @@
 import Loading from "@/components/shared/loading/loading";
+import NetworkError from "@/components/shared/networkerror/networkerror";
 import type { Course } from "@/types/course";
 import { useEffect, useState } from "react";
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Index() {
 
@@ -38,11 +39,7 @@ export default function Index() {
     return <Loading />;
   }
   if (error) {
-    return (
-      <View style={styles.container}>
-        <Text>Ooops, network error!</Text>
-      </View>
-    )
+    return <NetworkError />
   }
   return (
     <View style={styles.container}>
@@ -58,7 +55,7 @@ export default function Index() {
         onChangeText={text => setKeyword(text)}
         defaultValue={keyword}
       />
-      <ScrollView>
+      <View>
         {
           courses.map((course) => (
             <View key={course.id}>
@@ -66,7 +63,7 @@ export default function Index() {
             </View>
           ))
         }
-      </ScrollView>
+      </View>
     </View>
   )
 }
