@@ -5,12 +5,16 @@ import { Course } from "@/types/course";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+interface ApiResponse{
+  courses: Course[]
+}
+
 export default function Index() {
 
   const [keyword, setKeyword] = useState('')
 
   const { data, loading, error, onReload } = useFetchData('/search', { q: keyword });
-  const { courses } = data;
+  const { courses } = (data as ApiResponse);
 
   if (loading) {
     return <Loading />;
