@@ -1,39 +1,16 @@
 import Loading from "@/components/shared/loading/loading";
 import NetworkError from "@/components/shared/networkerror/networkerror";
-import type { Course } from "@/types/course";
-import { get } from "@/utils/request";
-import { useEffect, useState } from "react";
+import useFetchData from "@/hooks/useFetchData";
+import { Course } from "@/types/course";
+import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Index() {
 
   const [keyword, setKeyword] = useState('')
-  const [courses, setCourses] = useState<Course[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
 
-  const fetchData = async () => {
-
-      try {
-        const { data } = await get('/search', { q: keyword });
-        setCourses(data.courses)
-      } catch (err) {
-        setError(true)
-      }
-      finally {
-        setLoading(false)
-      }
-  };
-
-  const onReload = async () => {
-    setLoading(true);
-    setError(false);
-    await fetchData();
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [keyword]);
+  const { data, loading, error, onReload } = useFetchData('/search', { q: keyword });
+  const { courses } = data;
 
   if (loading) {
     return <Loading />;
@@ -52,7 +29,7 @@ export default function Index() {
       />
       <View>
         {
-          courses.map((course) => (
+          courses.map((course: Course) => (
             <View key={course.id}>
               <Text>{course.name}</Text>
             </View>
