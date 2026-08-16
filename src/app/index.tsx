@@ -31,6 +31,13 @@ export default function Index() {
       }
     }
   };
+
+  const onReload = async () => {
+    setLoading(true);
+    setError(false);
+    await fetchData();
+  }
+
   useEffect(() => {
     fetchData();
   }, [keyword]);
@@ -39,7 +46,7 @@ export default function Index() {
     return <Loading />;
   }
   if (error) {
-    return <NetworkError />
+    return <NetworkError title='OMG, where is my network?' onReload={onReload} />
   }
   return (
     <View style={styles.container}>

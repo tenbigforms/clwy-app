@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function NetworkError() {
+export default function NetworkError(props: { title?: string; onReload?: () => void; }) {
+
+    const title = props.title || 'Ooops, network error';
+    const { onReload } = props;
+
     return (
         <View style={styles.container}>
-            <Text style={styles.errortext}>Ooops, Network Error!</Text>
+            <Text style={styles.errortext}>{title}</Text>
+
+            <TouchableOpacity style={styles.reload} onPress={onReload}>
+                <Text style={styles.label}>Reload Page</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -17,5 +25,17 @@ const styles = StyleSheet.create({
     },
     errortext: {
         color: 'red',
+    },
+    reload: {
+        marginTop: 10,
+        backgroundColor: '#1f99b0',
+        height: 40,
+        borderRadius: 4,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    label: {
+        color: '#fff',
+        lineHeight: 40,
     },
 });
