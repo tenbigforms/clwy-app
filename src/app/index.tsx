@@ -3,10 +3,16 @@ import NetworkError from "@/components/shared/networkerror/networkerror";
 import useFetchData from "@/hooks/useFetchData";
 import { Course } from "@/types/course";
 import { useState } from "react";
-import { RefreshControl, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, ListRenderItem, RefreshControl, StyleSheet, Text, View } from "react-native";
+// import { SafeAreaView } from "react-native-safe-area-context";
 
 interface ApiResponse {
   courses: Course[]
+}
+
+interface ItemData {
+  id: number;
+  title: string;
 }
 
 export default function Index() {
@@ -14,8 +20,40 @@ export default function Index() {
   const [keyword, setKeyword] = useState('')
 
   const { data, loading, error, onReload } = useFetchData('/search', { q: keyword });
-  const { courses } = (data as ApiResponse);
+  const courses = (data as ApiResponse)?.courses || [];
   const [refreshing, setRefreshing] = useState(false);
+  const poetry = [
+    { "id": 1, "title": "静夜思" },
+    { "id": 2, "title": "望庐山瀑布" },
+    { "id": 3, "title": "早发白帝城" },
+    { "id": 4, "title": "黄鹤楼送孟浩然之广陵" },
+    { "id": 5, "title": "将进酒" },
+    { "id": 6, "title": "行路难·其一" },
+    { "id": 7, "title": "蜀道难" },
+    { "id": 8, "title": "月下独酌·其一" },
+    { "id": 9, "title": "赠汪伦" },
+    { "id": 10, "title": "梦游天姥吟留别" },
+    { "id": 11, "title": "宣州谢朓楼饯别校书叔云" },
+    { "id": 12, "title": "送友人" },
+    { "id": 13, "title": "登金陵凤凰台" },
+    { "id": 14, "title": "清平调·其一" },
+    { "id": 15, "title": "秋浦歌·白发三千丈" },
+    { "id": 16, "title": "渡荆门送别" },
+    { "id": 17, "title": "夜宿山寺" },
+    { "id": 18, "title": "独坐敬亭山" },
+    { "id": 19, "title": "关山月" },
+    { "id": 20, "title": "子夜吴歌·秋歌" },
+    { "id": 21, "title": "下终南山过斛斯山人宿置酒" },
+    { "id": 22, "title": "月下独酌·其二" },
+    { "id": 23, "title": "塞下曲六首·其一" },
+    { "id": 24, "title": "玉阶怨" },
+    { "id": 25, "title": "春夜洛城闻笛" },
+    { "id": 26, "title": "越中览古" },
+    { "id": 27, "title": "山中问答" },
+    { "id": 28, "title": "清平调·其一" },
+    { "id": 29, "title": "清平调·其二" },
+    { "id": 30, "title": "清平调·其三" }
+  ]
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -25,6 +63,13 @@ export default function Index() {
       setRefreshing(false);
     }, 2000);
   };
+const renderItem: ListRenderItem<ItemData> = ({ item }) => {
+    return (
+      <Text style={styles.title}>
+        {item.id}. {item.title}
+      </Text>
+    );
+  };
 
   if (loading) {
     return <Loading />;
@@ -33,30 +78,8 @@ export default function Index() {
     return <NetworkError title='OMG, where is my network?' onReload={onReload} />
   }
   return (
-    <ScrollView
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={'#1f99b0'} />
-      }>
-      <View>
-        <Text style={styles.content}>
-          君不見，黃河之水天上來，奔流到海不復回！
-          君不見，高堂明鏡悲白髮，朝如青絲暮成雪！
-          人生得意須盡歡，莫使金樽空對月。
-          天生我材必有用，千金散盡還復來。
-          烹羊宰牛且爲樂，會須一飲三百杯。
-          岑夫子，丹丘生。（將）進酒君莫停。
-          與君歌一曲，請君爲我傾耳聽。
-          鐘鼓饌玉不足貴，但願長醉不復醒。
-          古來聖賢皆寂寞，惟有飲者留其名。
-          陳王昔時宴平樂，斗酒十千恣歡謔。
-          主人何為言少錢？徑須沽取對君酌。
-          五花馬，千金裘。
-          呼兒將出換美酒，與爾同銷萬古愁。
-
-
-        </Text>
-      </View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+            {/* <View style={styles.container}>
         <Text>U R SEARHING FOR:{keyword}</Text>
         <TextInput
           style={styles.input}
@@ -73,9 +96,18 @@ export default function Index() {
             ))
           }
         </View>
-      </View>
-
-    </ScrollView>
+      </View> */}
+      <FlatList
+        data={poetry}
+        renderItem={renderItem}
+        keyExtractor={item => item.id.toString()}
+        ListHeaderComponent={<Text style={styles.header}>《李白》</Text>}
+        ListFooterComponent={<Text style={styles.footer}>No more...</Text>}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={'#1f99b0'} />
+        }
+      />
+    </View>
   )
 }
 
@@ -96,7 +128,23 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     color: '#111192',
   },
-  content: {
-    fontSize: 60
+  title: {
+    textAlign: "center",
+    fontSize: 20,
+    lineHeight: 40,
+  },
+  header: {
+    textAlign: "center",
+    fontSize: 40,
+    lineHeight: 60,
+    fontWeight: "bold",
+    marginVertical: 10,
+  },
+  footer: {
+    textAlign: "center",
+    fontSize: 18,
+    lineHeight: 40,
+    color: "#999",
   },
 });
+
