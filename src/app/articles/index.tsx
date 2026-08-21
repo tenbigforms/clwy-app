@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Index() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Here is notification page</Text>
+            <Text style={styles.title}>Notification Page</Text>
         </View>
     );
 }
