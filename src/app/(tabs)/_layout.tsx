@@ -30,7 +30,7 @@ export default function TabLayout() {
     return (
         <Tabs
             screenOptions={{
-                headerTitleAlign: 'center',       // 安卓标题栏居中
+                headerTitleAlign: 'center',
                 headerTitle: props => <LogoTitle {...props} />,
                 headerLeft: () => <HeaderButton name="bell" href="/articles" style={styles.headerButton} />,
                 headerRight: () => (
