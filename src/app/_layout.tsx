@@ -1,74 +1,30 @@
-import { Tabs, Stack, Link } from 'expo-router';
-import { Image } from 'expo-image';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Stack } from 'expo-router';
 
-function LogoTitle() {
-  return <Image style={styles.logo} contentFit="contain" source={require('../../assets/logo-light.png')} />;
-}
-
-
-function HeaderButton(props) {
-  const { name, ...rest } = props;
-
-  return (
-    <Link asChild {...rest} >
-      <TouchableOpacity>
-        <SimpleLineIcons size={20} color="#1f99b0" name={name} />
-      </TouchableOpacity>
-    </Link>
-  );
-}
 export default function Layout() {
   return (
-    <Tabs />
-    // <Stack
-    //   screenOptions={{
-    //     title: '',
-    //     headerTitleAlign: 'center',
-    //     animation: 'simple_push',
-    //     headerTintColor: '#1f99b0',
-    //     headerTitleStyle: {
-    //       fontWeight: '400',
-    //       color: '#2A2929',
-    //       fontSize: 16,
-    //     },
-    //     headerBackButtonDisplayMode: 'minimal',
-    //   }}
-    // >
-    //   <Stack.Screen
-    //     name="index"
-    //     options={{
-    //       headerTitle: props => <LogoTitle {...props} />,
-    //       headerLeft: () => <HeaderButton name="bell" href="/articles" style={styles.headerButton} />,
-    //       headerRight: () => (
-    //         <>
-    //           <HeaderButton name="magnifier" href="/search" style={[styles.headerButton, styles.searchButton]} />
-    //           <HeaderButton name="options" href="/settings" style={styles.headerRight} />
-    //         </>
-    //       ),
-    //     }}
-    //   />
-    //   <Stack.Screen
-    //     name="courses/[id]"
-    //     options={({ route }) => ({
-    //       title: route.params?.title || 'Course Page',
-    //     })}
-    //   />
-    // </Stack>
-  )
-}
+    <Stack
+      screenOptions={{
+        title: '',                      // 默认标题为空
+        headerTitleAlign: 'center',     // 安卓标题栏居中
+        animation: 'simple_push',       // 安卓使用左右切屏
+        headerTintColor: '#1f99b0',     // 导航栏中文字、按钮、图标的颜色
+        // 标题组件的样式
+        headerTitleStyle: {
+          fontWeight: '400',
+          color: '#2A2929',
+          fontSize: 16,
+        },
+        headerBackButtonDisplayMode: 'minimal', // 设置返回按钮只显示箭头，不显示文字
+      }}
+    >
+      {/* Tabs */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-const styles = StyleSheet.create({
-  logo: {
-    width: 130,
-    height: 30,
-  },
-  headerButton: {
-    padding: 8,
-    color: "#000000"
-  },
-  searchButton: {
-    marginRight: 8,
-  },
-});
+      {/* Cards */}
+      <Stack.Screen name="articles/index" options={{ title: '通知' }} />
+      <Stack.Screen name="settings/index" options={{ title: '设置' }} />
+      <Stack.Screen name="courses/[id]" options={{ title: '课程详情' }} />
+      <Stack.Screen name="search/index" options={{ title: '搜索' }} />
+    </Stack>
+  );
+}
