@@ -4,7 +4,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 function LogoTitle() {
-  return <Image style={styles.logo} contentFit="contain" source={require('../../assets/images/kisbook_icon.png')} />;
+  return <Image style={styles.logo} contentFit="contain" source={require('../../assets/logo-light.png')} />;
 }
 
 
