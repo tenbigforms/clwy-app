@@ -1,27 +1,16 @@
 import Loading from "@/components/shared/loading/loading"
 import NetworkError from "@/components/shared/networkerror/networkerror"
 import useFetchData from "@/hooks/useFetchData"
-import { Course } from "@/types/course"
 import { Link, useRouter } from "expo-router"
 import { useState } from "react"
 import { Button, StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native"
-
-interface ApiResponse {
-  courses: Course[]
-}
-
-interface ItemData {
-  id: number
-  title: string
-}
 
 export default function Index() {
 
 
   const [keyword, setKeyword] = useState()
   const [isEnabled, setIsEnabled] = useState(true)
-  const { data, loading, error, onReload } = useFetchData('/search', { q: keyword })
-  const courses = (data as ApiResponse)?.courses || []
+  const { loading, error, onReload } = useFetchData('/search', { q: keyword })
   const [count, setCount] = useState(1)
   const router = useRouter()
 
@@ -35,6 +24,7 @@ export default function Index() {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
   return (
+
     <View style={styles.container}>
 
       <View>
