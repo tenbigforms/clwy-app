@@ -3,17 +3,12 @@ import { Image } from 'expo-image';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-/**
- * 导航栏 Logo 组件
- */
+
 function LogoTitle() {
     return <Image style={styles.logo} contentFit="contain" source={require('@/assets/logo-light.png')} />;
 }
 
-/**
- * 导航栏按钮组件
- * @param props
- */
+
 function HeaderButton(props) {
     const { name, ...rest } = props;
 
@@ -43,15 +38,15 @@ export default function TabLayout() {
         >
             <Tabs.Screen
                 name="index"
-                options={{ title: '发现' }}
+                options={{ title: 'Home' }}
             />
             <Tabs.Screen
                 name="videos"
-                options={{ title: '视频课程' }}
+                options={{ title: 'Videos' }}
             />
             <Tabs.Screen
                 name="users"
-                options={{ title: '我的' }}
+                options={{ title: 'Mine' }}
             />
         </Tabs>
     );
