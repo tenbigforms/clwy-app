@@ -1,12 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet } from 'react-native';
 
-const users = () => {
+export default function Index() {
     return (
-        <View>
-            <Text>users</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>User Page</Text>
         </View>
-    )
+    );
 }
 
-export default users
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: '#e29447',
+    },
+});
