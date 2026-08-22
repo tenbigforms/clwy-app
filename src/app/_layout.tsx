@@ -15,10 +15,11 @@ export default function Layout() {
           fontSize: 16,
         },
         headerBackButtonDisplayMode: 'minimal',
+
       }}
     >
+      <Stack.Screen name="teachers/[id]" options={{ presentation: 'modal', title: '老师详情', }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
       <Stack.Screen name="articles/index" options={{ title: '通知' }} />
       <Stack.Screen name="settings/index" options={{ title: '设置' }} />
       <Stack.Screen name="courses/[id]" options={{ title: '课程详情' }} />
