@@ -73,7 +73,7 @@ export default function TabLayout() {
                 options={{
                     title: 'User',
                     tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-                    tabBarActiveTintColor: '#c1b01b',
+                    tabBarActiveTintColor: '#1bc163',
 
                 }}
             />
