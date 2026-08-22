@@ -37,7 +37,9 @@ export default function TabLayout() {
                         <HeaderButton name="magnifier" href="/search" style={[styles.headerButton, styles.searchButton]} />
                         <HeaderButton name="options" href="/settings" style={styles.headerButton} />
                     </>
+
                 ),
+
             }}
         >
             <Tabs.Screen
@@ -45,6 +47,7 @@ export default function TabLayout() {
                 options={{
                     title: 'Home',
                     tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} />,
+                    tabBarActiveTintColor: '#d90f0f',
                 }}
             />
             <Tabs.Screen
@@ -52,7 +55,11 @@ export default function TabLayout() {
                 options={{
                     title: 'Videos',
                     tabBarIcon: ({ color }) => <TabBarIcon name="camrecorder" color={color} />,
+                    tabBarActiveTintColor: '#0f67d9',
+
+
                 }}
+
             />
 
             <Tabs.Screen
@@ -60,6 +67,8 @@ export default function TabLayout() {
                 options={{
                     title: 'User',
                     tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+                    tabBarActiveTintColor: '#c1b01b',
+
                 }}
             />
         </Tabs>
