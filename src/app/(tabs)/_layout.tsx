@@ -42,15 +42,25 @@ export default function TabLayout() {
         >
             <Tabs.Screen
                 name="index"
-                options={{ title: 'Home' }}
+                options={{
+                    title: 'Home',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} />,
+                }}
             />
             <Tabs.Screen
                 name="videos"
-                options={{ title: 'Video' }}
+                options={{
+                    title: 'Videos',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="camrecorder" color={color} />,
+                }}
             />
+
             <Tabs.Screen
                 name="users"
-                options={{ title: 'Mine' }}
+                options={{
+                    title: 'User',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+                }}
             />
         </Tabs>
     );
