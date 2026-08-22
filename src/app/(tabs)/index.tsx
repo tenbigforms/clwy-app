@@ -30,6 +30,10 @@ export default function Index() {
       <Link style={styles.link} href="/courses/1?title=Node.js">
         Check Node.js Course
       </Link>
+
+      <Link style={styles.link} href="/teachers/1">
+        Modal
+      </Link>
     </View>
   )
 }

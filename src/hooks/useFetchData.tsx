@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { get } from '../utils/request';
+import { get } from '@/utils/request';
 
 
 const useFetchData = (url: string, params = {}) => {
