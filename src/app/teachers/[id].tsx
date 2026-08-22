@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native'
 
 export default function Teacher() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Teachers</Text>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#e29447',
     },
-});
+})

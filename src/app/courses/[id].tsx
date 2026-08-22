@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { useLocalSearchParams, useNavigation } from 'expo-router'
 
 export default function Course() {
 
-    const { id, } = useLocalSearchParams();
-    const navigation = useNavigation();
+    const { id, } = useLocalSearchParams()
+    const navigation = useNavigation()
 
 
     return (
@@ -17,7 +17,7 @@ export default function Course() {
                 <Text style={styles.buttonText}>Change title</Text>
             </TouchableOpacity>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#ff7f6f',
     },
-});
+})

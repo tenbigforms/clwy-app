@@ -1,9 +1,9 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Stack, useRouter } from 'expo-router';
-import { View, TouchableOpacity } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Stack, useRouter } from 'expo-router'
+import { View, TouchableOpacity } from 'react-native'
 
 function CloseButton() {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <View style={{ padding: 3 }}>

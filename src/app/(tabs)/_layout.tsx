@@ -1,20 +1,20 @@
-import { Tabs, Link } from 'expo-router';
-import { Image } from 'expo-image';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Tabs, Link } from 'expo-router'
+import { Image } from 'expo-image'
+import { SimpleLineIcons } from '@expo/vector-icons'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 
 function TabBarIcon(props) {
-    return <SimpleLineIcons size={25} {...props} />;
+    return <SimpleLineIcons size={25} {...props} />
 }
 
 function LogoTitle() {
-    return <Image style={styles.logo} contentFit="contain" source={require('@/assets/logo-light.png')} />;
+    return <Image style={styles.logo} contentFit="contain" source={require('@/assets/logo-light.png')} />
 }
 
 
 function HeaderButton(props) {
-    const { name, ...rest } = props;
+    const { name, ...rest } = props
 
     return (
         <Link asChild {...rest} >
@@ -22,7 +22,7 @@ function HeaderButton(props) {
                 <SimpleLineIcons size={20} color="#1f99b0" name={name} />
             </TouchableOpacity>
         </Link>
-    );
+    )
 }
 
 export default function TabLayout() {
@@ -78,7 +78,7 @@ export default function TabLayout() {
                 }}
             />
         </Tabs>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
     searchButton: {
         marginRight: 8,
     },
-});
+})

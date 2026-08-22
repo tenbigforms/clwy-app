@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
 
 export default function Index() {
     return (
@@ -10,7 +10,7 @@ export default function Index() {
                 Check React Native Course
             </Link>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#1f99b0',
     },
-});
+})

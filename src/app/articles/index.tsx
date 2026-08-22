@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
 
 export default function Index() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Notification Page</Text>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#4f9df7',
     },
-});
+})
