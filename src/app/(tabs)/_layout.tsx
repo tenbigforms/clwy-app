@@ -39,7 +39,13 @@ export default function TabLayout() {
                     </>
 
                 ),
-
+                tabBarButton: (props) => (
+                    <TouchableOpacity
+                        {...props}
+                        activeOpacity={1}
+                        style={[props.style, { backgroundColor: 'transparent' }]}
+                    />
+                ),
             }}
         >
             <Tabs.Screen
