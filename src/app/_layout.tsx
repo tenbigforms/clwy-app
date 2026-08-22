@@ -1,4 +1,18 @@
-import { Stack } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Stack, useRouter } from 'expo-router';
+import { View, TouchableOpacity } from 'react-native';
+
+function CloseButton() {
+  const router = useRouter();
+
+  return (
+    <View style={{ padding: 3 }}>
+      <TouchableOpacity onPress={() => router.dismiss()}>
+        <MaterialCommunityIcons name="close" size={30} color="#1f99b0" />
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 export default function Layout() {
   return (
@@ -28,8 +42,12 @@ export default function Layout() {
         options={{
           presentation: 'modal',
           title: '老师详情',
+          animation: 'slide_from_bottom',
+          headerLeft: () => <CloseButton />,
         }}
       />
     </Stack>
-  );
+
+
+  )
 }
