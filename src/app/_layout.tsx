@@ -20,10 +20,10 @@ export default function Layout() {
     >
       <Stack.Screen name="teachers/[id]" options={{ presentation: 'modal', title: '老师详情', }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="articles/index" options={{ title: '通知' }} />
-      <Stack.Screen name="settings/index" options={{ title: '设置' }} />
-      <Stack.Screen name="courses/[id]" options={{ title: '课程详情' }} />
-      <Stack.Screen name="search/index" options={{ title: '搜索' }} />
+      <Stack.Screen name="articles/index" options={{ title: 'Notification' }} />
+      <Stack.Screen name="settings/index" options={{ title: 'Settings' }} />
+      <Stack.Screen name="courses/[id]" options={{ title: 'Course' }} />
+      <Stack.Screen name="search/index" options={{ title: 'Search' }} />
     </Stack>
   );
 }
