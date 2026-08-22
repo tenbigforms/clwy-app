@@ -1,7 +1,7 @@
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native'
 
 export default function Loading() {
-return <ActivityIndicator size="large" color="#ff0037" style={styles.loading} />
+  return <ActivityIndicator size="large" color="#ff0037" style={styles.loading} />
 }
 
 const styles = StyleSheet.create({
@@ -14,4 +14,4 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 1,
   },
-});
+})

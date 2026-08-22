@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react';
-import { get } from '@/utils/request';
+import { useEffect, useState } from 'react'
+import { get } from '@/utils/request'
 
 
 const useFetchData = (url: string, params = {}) => {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   const fetchData = async () => {
     try {
       const { data } = await get(url, params);
-      setData(data);
+      setData(data)
     } catch (err) {
-      setError(true);
+      setError(true)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const onReload = async () => {
-    setLoading(true);
-    setError(false);
-    await fetchData();
-  };
+    setLoading(true)
+    setError(false)
+    await fetchData()
+  }
 
   useEffect(() => {
-    fetchData();
-  }, [url, JSON.stringify(params)]);
+    fetchData()
+  }, [url, JSON.stringify(params)])
 
   return {
     data,
@@ -37,4 +37,4 @@ const useFetchData = (url: string, params = {}) => {
   };
 };
 
-export default useFetchData;
+export default useFetchData
