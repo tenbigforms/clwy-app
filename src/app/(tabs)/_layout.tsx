@@ -4,6 +4,10 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 
+function TabBarIcon(props) {
+    return <SimpleLineIcons size={25} {...props} />;
+}
+
 function LogoTitle() {
     return <Image style={styles.logo} contentFit="contain" source={require('@/assets/logo-light.png')} />;
 }
