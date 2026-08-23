@@ -34,7 +34,7 @@ export default function Index() {
   }
 
   const renderItem = ({ item, index }) => (
-    <Link asChild href={{ pathname: '/courses/[id]', params: { id: 1 } }}>
+    <Link asChild href={{ pathname: '/courses/[id]', params: { id: item.id } }}>
       <TouchableWithoutFeedback>
         <View
           style={[
@@ -43,28 +43,18 @@ export default function Index() {
             index === recommendedCourses.length - 1 ? styles.last : null,
           ]}
         >
-          <Image
-            source={{
-              uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/images/1745294725066-584737782.jpeg`,
-            }}
-            style={styles.image}
-          />
+          <Image source={{ uri: item.image }} style={styles.image} />
           <View style={styles.content}>
             <Text style={styles.name} numberOfLines={1}>
-              课程名称
+              {item.name}
             </Text>
-            <Text style={styles.category}>课程分类</Text>
+            <Text style={styles.category}>{item.category.name}</Text>
             <View style={styles.userWrapper}>
-              <Image
-                source={{
-                  uri: `${process.env.EXPO_PUBLIC_API_URL}/uploads/images/avatar-user.png`,
-                }}
-                style={styles.avatar}
-              />
+              <Image source={{ uri: item.user.avatar }} style={styles.avatar} />
               <View style={styles.userInfo}>
-                <Text style={styles.nickname}>老师的名字</Text>
+                <Text style={styles.nickname}>{item.user.nickname}</Text>
                 <Text style={styles.company} numberOfLines={2}>
-                  老师的公司
+                  {item.user.company}
                 </Text>
               </View>
             </View>
