@@ -1,17 +1,29 @@
-import Loading from "@/components/shared/Loading"
-import NetworkError from "@/components/shared/NetworkError"
-import useFetchData from "@/hooks/useFetchData"
-import { Link, useRouter } from "expo-router"
-import { useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import {
+  ScrollView,
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native'
+import { Image } from 'expo-image'
+import { Link, useRouter } from 'expo-router'
+import useFetchData from '@/hooks/useFetchData'
+import Loading from '@/components/shared/Loading'
+import NetworkError from '@/components/shared/NetworkError'
+import { useState } from 'react'
+
 
 export default function Index() {
 
 
-  const [keyword, setKeyword] = useState()
-  const { loading, error, onReload } = useFetchData('/search', { q: keyword })
-  const router = useRouter()
-
+  // const [keyword, setKeyword] = useState()
+  // const { data, loading, error, onReload } = useFetchData('/search', { q: keyword })
+  // const router = useRouter()
+  const url = '/'
+  const { data, loading, error, onReload } = useFetchData(url)
+  const { recommendedCourses, likesCourses, introductoryCourses } = data
+  console.log(data)
 
   if (loading) {
     return <Loading />
@@ -22,7 +34,7 @@ export default function Index() {
 
   return (
 
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
 
       <Text style={styles.title}>Home Page</Text>
@@ -34,7 +46,7 @@ export default function Index() {
       <Link style={styles.link} href="/teachers/1">
         Modal
       </Link>
-    </View>
+    </ScrollView>
   )
 }
 
