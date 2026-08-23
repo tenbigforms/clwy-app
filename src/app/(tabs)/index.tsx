@@ -1,5 +1,5 @@
-import Loading from "@/components/shared/loading/loading"
-import NetworkError from "@/components/shared/networkerror/networkerror"
+import Loading from "@/components/shared/Loading"
+import NetworkError from "@/components/shared/NetworkError"
 import useFetchData from "@/hooks/useFetchData"
 import { Link, useRouter } from "expo-router"
 import { useState } from "react"
