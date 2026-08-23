@@ -4,18 +4,6 @@ import { View, TouchableOpacity } from 'react-native'
 import screenOptions from '@/opstions/screenOptions'
 import ModalCloseButton from '@/components/shared/ModalCloseButton'
 
-function CloseButton() {
-  const router = useRouter()
-
-  return (
-    <View style={{ padding: 3 }}>
-      <TouchableOpacity onPress={() => router.dismiss()}>
-        <MaterialCommunityIcons name="close" size={30} color="#1f99b0" />
-      </TouchableOpacity>
-    </View>
-  );
-}
-
 export default function Layout() {
   return (
     <Stack screenOptions={screenOptions}>
@@ -28,7 +16,7 @@ export default function Layout() {
         name="teachers/[id]"
         options={{
           presentation: 'modal',
-          title: '老师详情',
+          title: 'Teacher Details',
           animation: 'slide_from_bottom',
           headerLeft: () => { ModalCloseButton },
         }}
