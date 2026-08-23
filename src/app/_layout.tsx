@@ -1,6 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Stack, useRouter } from 'expo-router'
-import { View, TouchableOpacity } from 'react-native'
+import { Stack, } from 'expo-router'
 import screenOptions from '@/opstions/screenOptions'
 import ModalCloseButton from '@/components/shared/ModalCloseButton'
 
