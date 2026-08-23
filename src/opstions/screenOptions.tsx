@@ -4,7 +4,6 @@ export default function screenOptions() {
         headerTitleAlign: 'center',
         animation: 'simple_push',
         headerTintColor: '#1f99b0',
-        // 标题组件的样式
         headerTitleStyle: {
             fontWeight: '400',
             color: '#2A2929',

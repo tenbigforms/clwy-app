@@ -3,19 +3,12 @@ import { Image } from 'expo-image'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
-/**
- * 导航栏 Logo 组件
- */
 function LogoTitle() {
     return (
         <Image style={styles.logo} contentFit="contain" source={require('@/assets/logo-light.png')} />
     )
 }
 
-/**
- * 导航栏按钮组件
- * @param props
- */
 function HeaderButton(props) {
     const { name, ...rest } = props
 
@@ -30,7 +23,7 @@ function HeaderButton(props) {
 
 export default function tabOptions() {
     return {
-        headerTitleAlign: 'center', // 安卓标题栏居中
+        headerTitleAlign: 'center',
         headerTitle: (props) => <LogoTitle {...props} />,
         headerLeft: () => <HeaderButton name="bell" href="/articles" style={styles.headerButton} />,
         headerRight: () => (
