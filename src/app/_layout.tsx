@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Stack, useRouter } from 'expo-router'
 import { View, TouchableOpacity } from 'react-native'
 import screenOptions from '@/opstions/screenOptions'
+import ModalCloseButton from '@/components/shared/ModalCloseButton'
 
 function CloseButton() {
   const router = useRouter()
@@ -29,7 +30,7 @@ export default function Layout() {
           presentation: 'modal',
           title: '老师详情',
           animation: 'slide_from_bottom',
-          headerLeft: () => <CloseButton />,
+          headerLeft: () => { ModalCloseButton },
         }}
       />
     </Stack>
