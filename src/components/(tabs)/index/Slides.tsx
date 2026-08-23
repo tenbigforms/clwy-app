@@ -4,12 +4,6 @@ import { Image } from 'expo-image'
 
 export default function Slides(props) {
     const { courses } = props
-
-    /**
-     * 渲染列表中的每个课程
-     * @param item
-     * @param index
-     */
     const renderItem = ({ item, index }) => (
         <Link asChild href={{ pathname: '/courses/[id]', params: { id: item.id } }}>
             <TouchableWithoutFeedback>
