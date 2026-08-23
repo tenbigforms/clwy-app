@@ -1,4 +1,5 @@
 import {
+  RefreshControl,
   ScrollView,
   StyleSheet,
 } from 'react-native'
@@ -12,27 +13,36 @@ export default function Index() {
 
 
   const url = '/'
-  const { data, loading, error, onReload } = useFetchData(url)
+  const { data, loading, error, refreshing, onReload, onRefresh } = useFetchData(url)
   const { recommendedCourses, likesCourses, introductoryCourses } = data
+
+
   if (loading) {
     return <Loading />
   }
-  if (error) {
-    return <NetworkError title='OMG, where is my network?' onReload={onReload} />
-  }
 
+  if (error) {
+    return <NetworkError onReload={onReload} />
+  }
 
   return (
 
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          tintColor={'#1f99b0'}
+        />
+      }
+    >
       <Slides courses={recommendedCourses} />
       <CoursesList courses={likesCourses} title="Popular Courses" />
       <CoursesList courses={introductoryCourses} title="Baisic Courses" />
-
     </ScrollView>
   )
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

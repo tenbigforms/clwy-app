@@ -6,6 +6,8 @@ const useFetchData = (url: string, params = {}) => {
   const [data, setData] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [refreshing, setRefreshing] = useState(false)
+
 
   const fetchData = async () => {
     try {
@@ -24,6 +26,12 @@ const useFetchData = (url: string, params = {}) => {
     await fetchData()
   }
 
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await fetchData()
+    setRefreshing(false)
+  }
+
   useEffect(() => {
     fetchData()
   }, [url, JSON.stringify(params)])
@@ -32,8 +40,10 @@ const useFetchData = (url: string, params = {}) => {
     data,
     loading,
     error,
+    refreshing,
     setData,
     onReload,
+    onRefresh,
   };
 };
 
