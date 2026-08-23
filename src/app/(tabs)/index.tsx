@@ -6,6 +6,7 @@ import Slides from '@/components/(tabs)/index/Slides'
 import useFetchData from '@/hooks/useFetchData'
 import Loading from '@/components/shared/Loading'
 import NetworkError from '@/components/shared/NetworkError'
+import CoursesList from '@/components/(tabs)/index/CoursesList'
 
 export default function Index() {
 
@@ -13,8 +14,6 @@ export default function Index() {
   const url = '/'
   const { data, loading, error, onReload } = useFetchData(url)
   const { recommendedCourses, likesCourses, introductoryCourses } = data
-  // console.log(data)
-
   if (loading) {
     return <Loading />
   }
@@ -27,6 +26,9 @@ export default function Index() {
 
     <ScrollView style={styles.container}>
       <Slides courses={recommendedCourses} />
+      <CoursesList courses={likesCourses} title="Popular Courses" />
+      <CoursesList courses={introductoryCourses} title="Baisic Courses" />
+
     </ScrollView>
   )
 }
