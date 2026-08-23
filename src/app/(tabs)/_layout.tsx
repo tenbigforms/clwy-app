@@ -1,10 +1,20 @@
 import { Tabs, Link } from 'expo-router'
 import { Image } from 'expo-image'
 import { SimpleLineIcons } from '@expo/vector-icons'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { ComponentProps } from 'react';
 
 
-function TabBarIcon(props) {
+type SimpleLineIconsProps = React.ComponentProps<typeof SimpleLineIcons>;
+
+
+type HeaderButtonProps = {
+    name: SimpleLineIconsProps['name']
+    href: ComponentProps<typeof Link>['href']
+    style?: ComponentProps<typeof TouchableOpacity>['style']
+}
+
+function TabBarIcon(props: SimpleLineIconsProps) {
     return <SimpleLineIcons size={25} {...props} />
 }
 
@@ -13,9 +23,8 @@ function LogoTitle() {
 }
 
 
-function HeaderButton(props) {
+function HeaderButton(props: HeaderButtonProps) {
     const { name, ...rest } = props
-
     return (
         <Link asChild {...rest} >
             <TouchableOpacity>
@@ -32,7 +41,7 @@ export default function TabLayout() {
         <Tabs
             screenOptions={{
                 headerTitleAlign: 'center',
-                headerTitle: props => <LogoTitle {...props} />,
+                headerTitle: () => <LogoTitle />,
                 headerLeft: () => <HeaderButton name="bell" href="/articles" style={styles.headerButton} />,
                 headerRight: () => (
                     <>

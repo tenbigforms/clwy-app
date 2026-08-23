@@ -1,5 +1,6 @@
 import { Stack, } from 'expo-router'
 import screenOptions from '@/opstions/screenOptions'
+import tabOptions from '@/opstions/tabOptions'
 import ModalCloseButton from '@/components/shared/ModalCloseButton'
 
 export default function Layout() {
