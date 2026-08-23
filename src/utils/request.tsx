@@ -5,6 +5,7 @@ const request = async (url, { method = 'GET', params, body } = {}) => {
 
   const apiUrl = process.env.EXPO_PUBLIC_API_URL
   const requestUrl = urlcat(apiUrl, url, params)
+  // console.log(requestUrl)
 
 
   const headers = {

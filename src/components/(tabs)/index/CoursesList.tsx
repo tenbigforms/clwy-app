@@ -1,10 +1,16 @@
 import { Link } from 'expo-router'
 import { Text, View, StyleSheet, FlatList, TouchableWithoutFeedback, Platform } from 'react-native'
 import { Image } from 'expo-image'
+import { Course } from '@/types/course'
 
-export default function CoursesList(props) {
+interface CourseListProps {
+    courses: Course[]
+    title: string
+}
+
+export default function CoursesList(props: CourseListProps) {
     const { courses, title } = props
-    const renderItem = ({ item, index }) => (
+    const renderItem = ({ item, index }: { item: Course, index: number }) => (
         <Link asChild href={{ pathname: '/courses/[id]', params: { id: item.id } }}>
             <TouchableWithoutFeedback>
                 <View
@@ -38,7 +44,7 @@ export default function CoursesList(props) {
 
             <FlatList
                 data={courses}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={renderItem}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
