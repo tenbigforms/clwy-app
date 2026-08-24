@@ -18,7 +18,7 @@ export default function Index() {
                             router.push({
                                 pathname: '/settings/[uri]',
                                 params: {
-                                    uri: `https://www.youtube.com/`,
+                                    uri: `https://kisbook.com/`,
                                     title: '常用站点',
                                 },
                             })
