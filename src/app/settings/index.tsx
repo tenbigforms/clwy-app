@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, Alert } from 'react-native'
 import { TableView } from 'clwy-react-native-tableview-simple'
-import { Section, Cell } from '@/components/settings/TableView'
-
+import { Cell, Section } from '@/components/settings/TableView'
 export default function Index() {
     return (
         <ScrollView style={styles.container}>
