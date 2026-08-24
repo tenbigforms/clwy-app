@@ -10,6 +10,12 @@ export default function Layout() {
       <Stack.Screen name="articles/index" options={{ title: 'Notification' }} />
       <Stack.Screen name="articles/[id]" options={{ title: 'Notification Details' }} />
       <Stack.Screen name="settings/index" options={{ title: 'Settings' }} />
+      <Stack.Screen
+        name="settings/[uri]"
+        options={({ route }) => ({
+          title: route.params?.title
+        })}
+      />
       <Stack.Screen name="courses/[id]" options={{ title: 'Course' }} />
       <Stack.Screen name="search/index" options={{ title: 'Search' }} />
       <Stack.Screen

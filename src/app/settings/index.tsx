@@ -1,14 +1,29 @@
 import { ScrollView, StyleSheet, Alert } from 'react-native'
 import { TableView } from 'clwy-react-native-tableview-simple'
 import { Cell, Section } from '@/components/settings/TableView'
+import { useRouter } from 'expo-router'
+
 export default function Index() {
+
+    const router = useRouter()
     return (
         <ScrollView style={styles.container}>
             <TableView>
                 <Section>
                     <Cell title="Wiki" />
-                    <Cell title="常用站点" />
-                </Section>
+                    <Cell
+                        title="常用站点"
+
+                        onPress={() => {
+                            router.push({
+                                pathname: '/settings/[uri]',
+                                params: {
+                                    uri: `https://www.youtube.com/`,
+                                    title: '常用站点',
+                                },
+                            })
+                        }}
+                    />           </Section>
 
                 <Section>
                     <Cell title="关于「长乐未央」" />
