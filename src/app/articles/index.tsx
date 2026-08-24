@@ -12,29 +12,30 @@ import useFetchData from '@/hooks/useFetchData'
 import Loading from '@/components/shared/Loading'
 import NetworkError from '@/components/shared/NetworkError'
 import NoData from '@/components/shared/NoData'
-import { useState } from 'react'
-import { get } from '@/utils/request'
+import useLoadMore from '@/hooks/useLoadMore'
+
 
 export default function Index() {
 
     const url = '/articles'
     const { data, setData, loading, refreshing, onRefresh, error, onReload } = useFetchData(url)
     const { articles } = data
-    const logo = require('@/assets/logo-light.png')
-    const renderSeparator = () => <View style={styles.separator}></View>
-    const [page, setPage] = useState(1)
+    const { onEndReached } = useLoadMore(url, 'articles', setData)
 
-    const onEndReached = async () => {
-        const nextPage = page + 1
-        setPage(nextPage)
-        const { data } = await get(url, { page: nextPage })
-
-        setData((prevData) => ({
-            articles: [...prevData.articles, ...data.articles],
-        }))
+    if (loading) {
+        return <Loading />
     }
 
+    if (error) {
+        return <NetworkError onReload={onReload} />
+    }
+
+    const renderSeparator = () => <View style={styles.separator}></View>
+
+
     const renderItem = ({ item }) => {
+        const logo = require('@/assets/logo-light.png')
+
         return (
             <Link asChild href={{ pathname: '/articles/[id]', params: { id: item.id } }}>
                 <TouchableWithoutFeedback>
@@ -52,13 +53,6 @@ export default function Index() {
         )
     }
 
-    if (loading) {
-        return <Loading />
-    }
-
-    if (error) {
-        return <NetworkError onReload={onReload} />
-    }
 
     return (
         <FlatList
