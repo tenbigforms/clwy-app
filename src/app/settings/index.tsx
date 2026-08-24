@@ -1,23 +1,34 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, Alert, Image } from 'react-native'
+import { TableView, Section, Cell } from 'clwy-react-native-tableview-simple'
 
 export default function Index() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Settings Page</Text>
-        </View>
+        <ScrollView style={styles.container}>
+            <TableView>
+                <Section>
+                    <Cell title="Wiki" />
+                    <Cell title="常用站点" />
+                </Section>
+
+                <Section>
+                    <Cell title="关于「长乐未央」" />
+                    <Cell title="使用条款" />
+                    <Cell title="隐私政策" />
+                    <Cell title="App 备案号" />
+                </Section>
+
+                <Section>
+                    <Cell title="注销账户" />
+                    <Cell title="安全退出" />
+                </Section>
+            </TableView>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingHorizontal: 15,
     },
-    title: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: '#4f9df7',
-    },
-});
+})
