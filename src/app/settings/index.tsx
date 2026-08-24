@@ -1,5 +1,6 @@
-import { ScrollView, StyleSheet, Alert, Image } from 'react-native'
-import { TableView, Section, Cell } from 'clwy-react-native-tableview-simple'
+import { ScrollView, StyleSheet, Alert } from 'react-native'
+import { TableView } from 'clwy-react-native-tableview-simple'
+import { Section, Cell } from '@/components/settings/TableView'
 
 export default function Index() {
     return (
@@ -14,12 +15,17 @@ export default function Index() {
                     <Cell title="关于「长乐未央」" />
                     <Cell title="使用条款" />
                     <Cell title="隐私政策" />
-                    <Cell title="App 备案号" />
+                    <Cell title="注销账户" />
+                    <Cell
+                        title="App 备案号"
+                        onPress={() => {
+                            Alert.alert('备案号', '鄂ICP备13016268号-12A')
+                        }}
+                    />
                 </Section>
 
                 <Section>
-                    <Cell title="注销账户" />
-                    <Cell title="安全退出" />
+                    <Cell title="安全退出" titleTextColor="#ff6a6a" />
                 </Section>
             </TableView>
         </ScrollView>
