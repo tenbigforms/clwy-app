@@ -5,6 +5,7 @@
   "dependencies": {
     "@expo/ui": "~57.0.12",
     "@expo/vector-icons": "^15.0.2",
+    "clwy-react-native-tableview-simple": "^4.5.7",
     "expo": "^57.0.15",
     "expo-constants": "~57.0.7",
     "expo-device": "~57.0.1",
