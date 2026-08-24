@@ -8,7 +8,27 @@ export default function useLoadMore(url, key, setData) {
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
     const [hasMore, setHasMore] = useState(true)
+    // const resetLoadMore = () => {
+    //     setHasMore(true)
+    //     setPage(1)
+    // }
+    const LoadMoreFooter = () => {
+        let message
+        if (loading) {
+            message = 'Loading...'
+        } else if (!hasMore) {
+            message = 'No More'
+        } else {
+            message = 'Pull up to load more'
+        }
 
+        return (
+            <View style={styles.container}>
+                {loading && <ActivityIndicator size="small" color="#1f99b0" />}
+                <Text style={styles.message}>{message}</Text>
+            </View>
+        )
+    }
     const onEndReached = async () => {
         if (loading) return
         if (!hasMore) return
@@ -30,5 +50,19 @@ export default function useLoadMore(url, key, setData) {
         }
     }
 
-    return { onEndReached }
+    return { onEndReached, LoadMoreFooter }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 10,
+        paddingBottom: 20,
+    },
+    message: {
+        fontSize: 13,
+        marginHorizontal: 16,
+    },
+})

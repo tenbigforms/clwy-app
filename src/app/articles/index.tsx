@@ -20,8 +20,7 @@ export default function Index() {
     const url = '/articles'
     const { data, setData, loading, refreshing, onRefresh, error, onReload } = useFetchData(url)
     const { articles } = data
-    const { onEndReached } = useLoadMore(url, 'articles', setData)
-
+    const { onEndReached, LoadMoreFooter } = useLoadMore(url, 'articles', setData)
     if (loading) {
         return <Loading />
     }
@@ -59,7 +58,8 @@ export default function Index() {
             style={styles.container}
             contentContainerStyle={styles.contentContainer}
             data={articles}
-            keyExtractor={(item) => item.id.toString()}
+            // keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item, index) => `${item.id}-${index}`}
             renderItem={renderItem}
             ListEmptyComponent={<NoData />}
             ItemSeparatorComponent={renderSeparator}
@@ -72,6 +72,7 @@ export default function Index() {
             }
             onEndReached={onEndReached}
             onEndReachedThreshold={0.1}
+            ListFooterComponent={LoadMoreFooter}
         />
     )
 }
