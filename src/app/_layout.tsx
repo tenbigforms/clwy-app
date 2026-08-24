@@ -8,6 +8,7 @@ export default function Layout() {
     <Stack screenOptions={screenOptions}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="articles/index" options={{ title: 'Notification' }} />
+      <Stack.Screen name="articles/[id]" options={{ title: 'Notification Details' }} />
       <Stack.Screen name="settings/index" options={{ title: 'Settings' }} />
       <Stack.Screen name="courses/[id]" options={{ title: 'Course' }} />
       <Stack.Screen name="search/index" options={{ title: 'Search' }} />
