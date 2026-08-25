@@ -1,12 +1,11 @@
-import urlcat from 'urlcat'
+import { buildUrl } from '@/utils'
 
 
 const request = async (url, { method = 'GET', params, body } = {}) => {
 
   const apiUrl = process.env.EXPO_PUBLIC_API_URL
-  const requestUrl = urlcat(apiUrl, url, params)
+  const requestUrl = buildUrl(apiUrl, url, params)
   // console.log(requestUrl)
-
 
   const headers = {
     Accept: 'application/json',

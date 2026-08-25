@@ -18,6 +18,7 @@ export default function Layout() {
       />
       <Stack.Screen name="courses/[id]" options={{ title: 'Course' }} />
       <Stack.Screen name="search/index" options={{ title: 'Search' }} />
+      <Stack.Screen name="search/[keyword]" options={{ title: 'Search results' }} />
       <Stack.Screen
         name="teachers/[id]"
         options={{
