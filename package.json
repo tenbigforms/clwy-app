@@ -5,6 +5,7 @@
   "dependencies": {
     "@expo/ui": "~57.0.13",
     "@expo/vector-icons": "^15.0.2",
+    "clwy-expo-scrollable-tab-view": "^1.1.5",
     "clwy-react-native-tableview-simple": "^4.5.7",
     "expo": "~57.0.16",
     "expo-constants": "~57.0.7",
@@ -23,6 +24,7 @@
     "react-dom": "19.2.3",
     "react-native": "0.86.2",
     "react-native-gesture-handler": "~2.32.0",
+    "react-native-pager-view": "8.0.2",
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
