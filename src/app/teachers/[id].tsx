@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     bio: {
         marginTop: 20,
         paddingHorizontal: 20,
-        fontSize: 12,
-        lineHeight: 20,
-        color: '#555',
+        fontSize: 11,
+        lineHeight: 18,
+        color: '#000000',
     },
 })
