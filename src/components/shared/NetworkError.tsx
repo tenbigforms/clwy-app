@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 export default function NetworkError(props: { title?: string; onReload?: () => void; }) {
 
@@ -7,8 +8,8 @@ export default function NetworkError(props: { title?: string; onReload?: () => v
 
     return (
         <View style={styles.container}>
+            {/* <SimpleLineIcons name={"alert"} size={10} color={"#1f99b0"} /> */}
             <Text style={styles.errortext}>{title}</Text>
-
             <TouchableOpacity style={styles.reload} onPress={onReload}>
                 <Text style={styles.label}>Reload Page</Text>
             </TouchableOpacity>
