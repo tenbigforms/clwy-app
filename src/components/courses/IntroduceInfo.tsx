@@ -1,10 +1,20 @@
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Share, Platform } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 
 export default function IntroduceInfo(props) {
     const { course } = props
+    const onShare = async () => {
+        const url = 'https://clwy.cn/courses/fullstack-node'
+        // const url = `${process.env.EXPO_PUBLIC_API_URL}/courses/${course.id}`
 
+        const message = Platform.OS === 'ios' ? course.name : `${course.name}：\n${url}`
+
+        await Share.share({
+            message,
+            url,
+        })
+    }
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -28,7 +38,7 @@ export default function IntroduceInfo(props) {
                     </View>
                     <View style={styles.buttons}>
                         <View style={styles.shareWrapper}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={onShare}>
                                 <MaterialCommunityIcons name={'share'} size={26} color={'#000'} />
                             </TouchableOpacity>
                             <Text style={styles.shareText}>分享</Text>
