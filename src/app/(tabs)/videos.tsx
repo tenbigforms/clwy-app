@@ -3,6 +3,7 @@ import ScrollableTabView, { ScrollableTabBar } from 'clwy-expo-scrollable-tab-vi
 import useFetchData from '@/hooks/useFetchData'
 import Loading from '@/components/shared/Loading'
 import NetworkError from '@/components/shared/NetworkError'
+import CoursesList from '@/components/shared/CoursesList'
 
 export default function Index() {
 
@@ -21,7 +22,7 @@ export default function Index() {
     }
 
     const pages = categories.map((item) => (
-        <Text key={item.id.toString()} tabLabel={item.name} />
+        <CoursesList key={item.id.toString()} tabLabel={item.name} url={`/categories/${item.id}`} />
     ))
 
     return (
