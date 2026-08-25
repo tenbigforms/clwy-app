@@ -18,7 +18,7 @@ export default function Index() {
                             router.push({
                                 pathname: '/settings/[uri]',
                                 params: {
-                                    uri: `https://kisbook.com/`,
+                                    uri: `https://clwy.cn/sites`,
                                     title: '常用站点',
                                 },
                             })

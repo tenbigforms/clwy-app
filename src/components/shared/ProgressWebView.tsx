@@ -9,14 +9,20 @@ export default function ProgressWebView(props) {
     const ProgressBar = (props) => {
         if (progress >= 1) return null
         const width = `${props.progress * 100}%`
-
-        return <View style={[styles.loadingBar, { width }]} />
+        // const width2 = `${props.progress - 100}`
+        return (
+            <View style={[styles.loadingBar, { width }]}>
+                {/* <View style={[styles.loadingBarr, { width2 }]} /> */}
+            </View>
+        )
     }
 
     return (
         <View style={styles.container}>
             <ProgressBar progress={progress} />
+
             <WebView
+                userAgent="clwy-app"
                 startInLoadingState={true}
                 renderLoading={() => <Loading />}
                 onLoadProgress={({ nativeEvent }) => {
@@ -35,6 +41,10 @@ const styles = StyleSheet.create({
     },
     loadingBar: {
         backgroundColor: '#2ce1db',
+        height: 2,
+    },
+    loadingBarr: {
+        backgroundColor: '#171b1b',
         height: 2,
     },
 })
