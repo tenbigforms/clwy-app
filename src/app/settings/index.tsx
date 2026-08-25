@@ -1,34 +1,21 @@
 import { ScrollView, StyleSheet, Alert } from 'react-native'
 import { TableView } from 'clwy-react-native-tableview-simple'
 import { Cell, Section } from '@/components/settings/TableView'
-import { useRouter } from 'expo-router'
 
 export default function Index() {
 
-    const router = useRouter()
     return (
         <ScrollView style={styles.container}>
             <TableView>
                 <Section>
-                    <Cell title="Wiki" />
-                    <Cell
-                        title="常用站点"
-
-                        onPress={() => {
-                            router.push({
-                                pathname: '/settings/[uri]',
-                                params: {
-                                    uri: `https://clwy.cn/sites`,
-                                    title: '常用站点',
-                                },
-                            })
-                        }}
-                    />           </Section>
+                    <Cell title="Wiki" uri="wikis" />
+                    <Cell title="常用站点" uri="sites" />
+                </Section>
 
                 <Section>
-                    <Cell title="关于「长乐未央」" />
-                    <Cell title="使用条款" />
-                    <Cell title="隐私政策" />
+                    <Cell title="关于「长乐未央」" uri="about" />
+                    <Cell title="使用条款" uri="rules" />
+                    <Cell title="隐私政策" uri="privacy" />
                     <Cell title="注销账户" />
                     <Cell
                         title="App 备案号"
@@ -39,7 +26,7 @@ export default function Index() {
                 </Section>
 
                 <Section>
-                    <Cell title="安全退出" titleTextColor="#ff6a6a" />
+                    <Cell title="安全退出" titleTextColor="#ff9d9d" />
                 </Section>
             </TableView>
         </ScrollView>

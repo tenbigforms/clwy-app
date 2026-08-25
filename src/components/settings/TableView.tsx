@@ -19,6 +19,21 @@ export function Section(props) {
 
 
 export function Cell(props) {
+    const { uri, onPress, ...rest } = props
+    const router = useRouter()
+    const baseUrl = 'https://clwy.cn'
+    const navigateToDetail = () => {
+        if (!uri) return
+
+        router.push({
+            pathname: '/settings/[uri]',
+            params: {
+                title: rest?.title,
+                uri: `${baseUrl}/${uri}`,
+            },
+        })
+    }
+
     return (
         <DefaultCell
             accessory="DisclosureIndicator"
@@ -26,7 +41,8 @@ export function Cell(props) {
             titleTextColor="#000000"
             contentContainerStyle={{ height: 55 }}
             backgroundColor="#fff"
-            {...props}
+            onPress={onPress || navigateToDetail}
+            {...rest}
         />
     )
 }
