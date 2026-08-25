@@ -1,7 +1,29 @@
 import { StyleSheet, Text } from 'react-native'
 import ScrollableTabView, { ScrollableTabBar } from 'clwy-expo-scrollable-tab-view'
+import useFetchData from '@/hooks/useFetchData'
+import Loading from '@/components/shared/Loading'
+import NetworkError from '@/components/shared/NetworkError'
 
 export default function Index() {
+
+    const url = '/categories'
+    const { data, loading, error, onReload } = useFetchData(url)
+    const { categories } = data
+
+    // 加载中
+    if (loading) {
+        return <Loading />
+    }
+
+    // 网络错误
+    if (error) {
+        return <NetworkError onReload={onReload} />
+    }
+
+    const pages = categories.map((item) => (
+        <Text key={item.id.toString()} tabLabel={item.name} />
+    ))
+
     return (
         <ScrollableTabView
             style={styles.container}
@@ -13,14 +35,7 @@ export default function Index() {
             tabBarActiveTextColor={'#000'}
             tabBarTextStyle={styles.barText}
         >
-            <Text tabLabel="新闻">新闻的内容</Text>
-            <Text tabLabel="体育">体育的内容</Text>
-            <Text tabLabel="生活">生活的内容</Text>
-            <Text tabLabel="娱乐">娱乐的内容</Text>
-            <Text tabLabel="科技">科技的内容</Text>
-            <Text tabLabel="创业">创业的内容</Text>
-            <Text tabLabel="教育">教育内容</Text>
-            <Text tabLabel="财经">财经的内容</Text>
+            {pages}
         </ScrollableTabView>
     )
 }
