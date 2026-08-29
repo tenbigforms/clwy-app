@@ -25,17 +25,7 @@ export default function SignUpForm(props) {
         password: '',
     })
     const [loading, setLoading] = useState(false)
-
-    /**
-     * 表单输入
-     * @param name 表单字段名
-     * @param text 输入的内容
-     */
     const onChangeText = (name, text) => { }
-
-    /**
-     * 提交表单
-     */
     const handleSubmit = () => { }
 
     return (
