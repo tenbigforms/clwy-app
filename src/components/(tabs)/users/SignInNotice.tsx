@@ -1,20 +1,18 @@
-import { router } from 'expo-router'
-import { StyleSheet, Text, View } from 'react-native'
-
-import { useSession } from '@/utils/ctx'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
 
 export default function SignInNotice() {
-    const { signIn } = useSession()
     return (
         <View style={styles.container}>
-            <Text
-                style={styles.button}
-                onPress={() => {
-                    signIn()
-                }}
-            >
-                登录
-            </Text>
+            <View style={styles.button}>
+                <Link href={{ pathname: '/auth' }} asChild>
+                    <TouchableOpacity>
+                        <Text style={styles.signIn}>登录</Text>
+                    </TouchableOpacity>
+                </Link>
+            </View>
+
+            <Text style={styles.notice}>请先登录后再访问</Text>
         </View>
     )
 }
@@ -22,13 +20,26 @@ export default function SignInNotice() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
     },
     button: {
+        marginTop: 32,
+        backgroundColor: '#1f99b0',
+        borderRadius: 5,
+    },
+    signIn: {
+        color: '#fff',
+        textAlign: 'center',
+        lineHeight: 40,
+        width: 160,
+        height: 40,
+        fontSize: 16,
+    },
+    notice: {
         marginTop: 20,
-        fontSize: 20,
-        color: '#1f99b0',
+        fontWeight: '300',
+        fontSize: 12,
     },
 })

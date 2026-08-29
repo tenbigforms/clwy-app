@@ -30,6 +30,15 @@ export default function Layout() {
             headerLeft: () => { ModalCloseButton },
           }}
         />
+        <Stack.Screen
+          name="auth/index"
+          options={{
+            presentation: 'modal',
+            title: '会员登录 & 注册',
+            headerLeft: () => <ModalCloseButton />,
+            animation: 'slide_from_bottom',
+          }}
+        />
       </Stack>
     </SessionProvider>
 
