@@ -1,18 +1,22 @@
-import { Stack } from 'expo-router'
+import { Slot } from 'expo-router'
+
 import { useSession } from '@/utils/ctx'
+import Loading from '@/components/shared/Loading'
+import SignInNotice from '@/components/(tabs)/users/SignInNotice'
 
-export default function AuthLayout() {
-    const { session } = useSession()
+export default function AppLayout() {
+    const { session, isLoading } = useSession()
 
-    return (
-        <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Protected guard={!!session}>
-                <Stack.Screen name="index" />
-            </Stack.Protected>
+    // 渲染加载中
+    if (isLoading) {
+        return <Loading />
+    }
 
-            <Stack.Protected guard={!session}>
-                <Stack.Screen name="sign-in" />
-            </Stack.Protected>
-        </Stack>
-    )
+    // 如果用户未登录，渲染登录提示组件
+    if (!session) {
+        return <SignInNotice />
+    }
+
+    // 已登录，渲染子路由
+    return <Slot />
 }

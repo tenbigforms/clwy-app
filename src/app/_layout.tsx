@@ -3,13 +3,10 @@ import screenOptions from '@/opstions/screenOptions'
 import tabOptions from '@/opstions/tabOptions'
 import ModalCloseButton from '@/components/shared/ModalCloseButton'
 import { SessionProvider } from '@/utils/ctx'
-import { SplashScreenController } from '@/utils/splash'
 
 export default function Layout() {
   return (
     <SessionProvider>
-      <SplashScreenController />
-
       <Stack screenOptions={screenOptions}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="articles/index" options={{ title: 'Notification' }} />

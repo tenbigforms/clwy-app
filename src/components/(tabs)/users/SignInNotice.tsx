@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import { useSession } from '@/utils/ctx'
 
-export default function SignIn() {
+export default function SignInNotice() {
     const { signIn } = useSession()
     return (
         <View style={styles.container}>
